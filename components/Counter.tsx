@@ -5,7 +5,7 @@ interface CounterProps {
 }
 
 export default function Counter({ name }: CounterProps) {
-  const [count, setCount] = useState(0);
+  var [count, setCount] = useState(0);
 
   return (
     <div className="flex flex-col items-center space-y-4 w-80 p-4 border rounded-lg">
