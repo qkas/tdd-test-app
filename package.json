@@ -2,6 +2,7 @@
   "name": "tdd-test-app",
   "version": "0.1.0",
   "private": true,
+  "description": "Simple TDD app testing automatic linting, testing, building and deployment with GitHub Actions",
   "homepage": "https://qkas.github.io/tdd-test-app",
   "scripts": {
     "dev": "next dev",
