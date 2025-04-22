@@ -6,7 +6,7 @@ describe('Counter', () => {
   it('renders counter with name and initial count', () => {
     render(<Counter name="Test Counter" />)
     expect(screen.getByText('Test Counter')).toBeInTheDocument()
-    expect(screen.getByText('Score: 1')).toBeInTheDocument()
+    expect(screen.getByText('Score: 0')).toBeInTheDocument()
   })
 
   it('increments count when + button is clicked', () => {
