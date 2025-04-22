@@ -1,8 +1,5 @@
 name: Lint and test the application
-
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
