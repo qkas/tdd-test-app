@@ -5,6 +5,7 @@ on:
     workflows: ["Lint and test the application"]
     types:
       - completed
+    branches: [main]
 
 permissions:
   contents: read
