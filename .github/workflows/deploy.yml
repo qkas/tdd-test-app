@@ -2,7 +2,7 @@ name: Deploy Next.js site to GH Pages
 
 on:
   workflow_run:
-    workflows: ["Lint and Test"]
+    workflows: ["Lint and test the application"]
     types:
       - completed
 
