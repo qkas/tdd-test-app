@@ -1,10 +1,11 @@
-name: lint, test, build and deploy
+name: Lint and test the application
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -29,6 +30,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    needs: lint
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
@@ -46,30 +48,3 @@ jobs:
 
     - name: Run Tests
       run: npm test -- --watchAll=false --ci --coverage
-
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: test
-    if: success()
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: build
